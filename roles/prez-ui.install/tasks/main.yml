@@ -1,0 +1,25 @@
+- block:
+    - name: create prez-ui container with a systemd service file managed by systemctl
+      containers.podman.podman_container:
+        name: prez-ui
+        image: "{{ prez_ui_image }}"
+        state: present
+        ports:
+          - "8001:8000"
+        generate_systemd:
+          path: /etc/systemd/system/
+          restart_policy: always
+
+    - name: enable prez-ui service
+      systemd:
+        name: container-prez-ui
+        enabled: true
+        daemon_reload: true
+
+    - name: start prez-ui
+      systemd:
+        name: container-prez-ui
+        state: started
+        daemon_reload: true
+
+  become: true

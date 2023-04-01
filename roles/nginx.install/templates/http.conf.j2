@@ -1,0 +1,15 @@
+server {
+    server_name api.gsq-prez.dev.kurrawong.ai;
+
+    include /etc/nginx/prez.conf;
+}
+
+server {
+    server_name gsq-prez.dev.kurrawong.ai;
+
+    {% if nginx_expose_fuseki %}
+    include /etc/nginx/fuseki.conf;
+    {% endif %}
+
+    include /etc/nginx/prez-ui.conf;
+}

@@ -1,0 +1,36 @@
+- name: Manage Prez stack
+  hosts: webservers
+  vars_files:
+    - group_vars/webservers.yml
+    - group_vars/vault.yml
+
+  remote_user: "{{ remote_server_user }}"
+
+  roles:
+    - name: nginx.install
+      tags:
+        - nginx.install
+
+    - name: podman.install
+      tags:
+        - podman.install
+
+    - name: prez-ui.install
+      tags:
+        - prez-ui.install
+
+    - name: fuseki.install
+      tags:
+        - fuseki.install
+
+    - name: fuseki.load-initial-data
+      tags:
+        - fuseki.load-initial-data
+
+    - name: prez.install
+      tags:
+        - prez.install
+
+    - name: swapfile.enable
+      tags:
+        - swapfile.enable
