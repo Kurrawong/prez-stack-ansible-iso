@@ -13,6 +13,8 @@ The different components of the Prez Stack run inside containers managed by Podm
 
 Fuseki, Prez and Prez UI all run inside their own containers and they are accessed through an NGINX server running on the target machine.
 
+![prez-stack.png](prez-stack.png)
+
 ## Ansible environment
 
 Ansible version 2.14 and Python 3.9 - 3.11 is required.
