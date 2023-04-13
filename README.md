@@ -109,3 +109,19 @@ Note: modify the swapfile variables in [group_vars/webservers.yml](group_vars/we
 ```
 ansible-playbook -i hosts --vault-password-file ./ansiblepass prez.yml -t swapfile.enable
 ```
+
+### Updating Prez container image caveat
+
+Since Prez container image releases are not currently versioned, running the `prez.install` role won't automatically pull the latest container image if the same version tag already exists on the machine. In this case, since the version tag for the image is `latest`.
+
+To update the Prez container image, do the following:
+
+- Stop the Prez container service
+  - `sudo systemctl stop container-prez`
+- Remove the container
+  - `sudo podman rm prez`
+- Pull the latest image
+  - `sudo podman pull ghcr.io/rdflib/prez:latest`
+- Run the `prez.install` role as described above
+
+Since the other container images for Fuseki and Prez UI are versioned with unique tags, there's no need to do the manual process. Simply run the relevant install role for the system.
