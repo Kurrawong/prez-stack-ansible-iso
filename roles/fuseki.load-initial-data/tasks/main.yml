@@ -16,7 +16,7 @@
 
     - name: clone qld-resources-prez repo to /tmp/qld-resources-prez
       ansible.builtin.git:
-        repo: https://github.com/Kurrawong/qld-resources-prez-ui.git
+        repo: https://github.com/Kurrawong/qld-resources-prez.git
         dest: /tmp/qld-resources-prez
         depth: 1
 
