@@ -15,6 +15,12 @@ Fuseki, Prez and Prez UI all run inside their own containers and they are access
 
 ![prez-stack.png](prez-stack.png)
 
+## Before starting
+
+This playbook assumes a cloud VM with SSH access has been set up. If you are using AWS, it would be an EC2 instance.
+
+Ensure a DNS record has been set to point to the IP of the VM and update the domain name information in the `hosts` file and the `group_vars/webservers.yml`. This value is used to target the VM machine and also to register an SSL certificate with Let's Encrypt.
+
 ## Ansible environment
 
 Ansible version 2.14 and Python 3.9 - 3.11 is required.
