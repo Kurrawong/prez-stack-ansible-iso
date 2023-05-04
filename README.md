@@ -25,14 +25,14 @@ Ensure a DNS record has been set to point to the IP of the VM and update the dom
 
 Ansible version 2.14 and Python 3.9 - 3.11 is required.
 
-Create a Python virtual environment and use it.
+### Create a Python virtual environment and use it.
 
 ```
 python -m venv venv
 source venv/bin/activate
 ```
 
-Install the Python dependencies.
+### Install the Python dependencies.
 
 ```
 pip install -r requirements.txt
@@ -60,7 +60,7 @@ Run the roles in sequence for a fresh installation. The plays target the hosts w
 
 ---
 
-Install nginx, certbot and setup letsencrypt.
+#### Install nginx, certbot and setup letsencrypt.
 
 Note: modify the letsencrypt variables in [group_vars/webservers.yml](group_vars/webservers.yml) as required.
 
@@ -68,13 +68,13 @@ Note: modify the letsencrypt variables in [group_vars/webservers.yml](group_vars
 ansible-playbook -i hosts --vault-password-file ./ansiblepass prez.yml -t nginx.install
 ```
 
-Install podman.
+#### Install podman.
 
 ```
 ansible-playbook -i hosts --vault-password-file ./ansiblepass prez.yml -t podman.install
 ```
 
-Install Qld Gov Dept Resource Prez UI.
+#### Install Qld Gov Dept Resource Prez UI.
 
 Note: modify the container image variable in [group_vars/webservers.yml](group_vars/webservers.yml) as required.
 
@@ -82,7 +82,7 @@ Note: modify the container image variable in [group_vars/webservers.yml](group_v
 ansible-playbook -i hosts --vault-password-file ./ansiblepass prez.yml -t prez-ui.install
 ```
 
-Install Apache Jena Fuseki.
+#### Install Apache Jena Fuseki.
 
 Note: modify the Fuseki variables in [group_vars/webservers.yml](group_vars/webservers.yml) as required.
 
@@ -94,13 +94,13 @@ Fuseki's basic authentication details such as username and password can be chang
 ansible-playbook -i hosts --vault-password-file ./ansiblepass prez.yml -t fuseki.install
 ```
 
-Load initial data into Fuseki.
+#### Load initial data into Fuseki.
 
 ```
 ansible-playbook -i hosts --vault-password-file ./ansiblepass prez.yml -t fuseki.load-initial-data
 ```
 
-Install Prez.
+#### Install Prez.
 
 Note: modify the Prez variables in [group_vars/webservers.yml](group_vars/webservers.yml) as required.
 
@@ -108,7 +108,7 @@ Note: modify the Prez variables in [group_vars/webservers.yml](group_vars/webser
 ansible-playbook -i hosts --vault-password-file ./ansiblepass prez.yml -t prez.install
 ```
 
-Enable swap on target machine.
+#### Enable swap on target machine.
 
 Note: modify the swapfile variables in [group_vars/webservers.yml](group_vars/webservers.yml) as required.
 
