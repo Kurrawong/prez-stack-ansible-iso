@@ -1,6 +1,6 @@
 # QLD Gov Dept Resources Ansible Prez Stack
 
-An Ansible playbook and roles to manage cloud VMs running the Prez Stack.
+An Ansible playbook and roles to manage Debian cloud VMs running the Prez Stack.
 
 The Prez Stack consists of the following:
 
