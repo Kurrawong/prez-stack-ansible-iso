@@ -1,4 +1,11 @@
 - block:
+    - name: copy .env from host to target /home/ubuntu/.env
+      ansible.builtin.copy:
+        src: .env
+        dest: /home/ubuntu/.env
+        owner: root
+        mode: "0644"
+
     - name: create prez-ui container with a systemd service file managed by systemctl
       containers.podman.podman_container:
         name: prez-ui
@@ -11,6 +18,8 @@
           restart_policy: always
         env:
           VOCPREZ_SPARQL_ENDPOINT: http://0.0.0.0:3030/gsq
+        volume:
+          - /home/ubuntu/.env:/.env
 
     - name: enable prez-ui service
       systemd:
