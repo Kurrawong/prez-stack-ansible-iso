@@ -5,10 +5,12 @@
         image: "{{ prez_ui_image }}"
         state: present
         ports:
-          - "8001:8000"
+          - "8001:80"
         generate_systemd:
           path: /etc/systemd/system/
           restart_policy: always
+        env:
+          VOCPREZ_SPARQL_ENDPOINT: http://0.0.0.0:3030/gsq
 
     - name: enable prez-ui service
       systemd:

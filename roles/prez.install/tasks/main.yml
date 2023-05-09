@@ -10,7 +10,6 @@
           - uvicorn prez.app:app --host=0.0.0.0 --port=8000 --proxy-headers
         env:
           VOCPREZ_SPARQL_ENDPOINT: http://0.0.0.0:3030/gsq
-          SPACEPREZ_SPARQL_ENDPOINT: http://0.0.0.0:3030/gsq
         state: present
         generate_systemd:
           path: /etc/systemd/system/

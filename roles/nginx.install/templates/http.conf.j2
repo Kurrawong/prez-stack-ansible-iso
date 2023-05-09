@@ -1,11 +1,11 @@
 server {
-    server_name api.gsq-prez.dev.kurrawong.ai;
+    server_name api.iso.dev.kurrawong.ai;
 
     include /etc/nginx/prez.conf;
 }
 
 server {
-    server_name gsq-prez.dev.kurrawong.ai;
+    server_name iso.dev.kurrawong.ai;
 
     {% if nginx_expose_fuseki %}
     include /etc/nginx/fuseki.conf;
