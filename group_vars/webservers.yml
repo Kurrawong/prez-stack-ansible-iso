@@ -3,7 +3,7 @@ letsencrypt_email: kurrawongai@gmail.com
 domain_name: gsq-prez.dev.kurrawong.ai,api.gsq-prez.dev.kurrawong.ai
 
 # container images
-prez_ui_image: ghcr.io/kurrawong/gsq-prez-ui:git-main-86572abe
+prez_ui_image: ghcr.io/kurrawong/gsq-prez-ui:git-main-c8528870
 prez_image: ghcr.io/rdflib/prez:3.0.9
 fuseki_image: ghcr.io/kurrawong/fuseki-geosparql:git-main-23a3a84d
 
