@@ -54,6 +54,20 @@ To edit the vault file, run the following.
 ansible-vault edit group_vars/vault.yml --vault-password-file ./ansiblepass
 ```
 
+These are the variables in the vault.
+
+```
+# Remote server's user, e.g., ec2-user, ubuntu
+remote_server_user:
+
+# The Fuseki basic auth credentials
+fuseki_user:
+fuseki_password:
+
+# The Google Maps API key used by Prez UI
+google_maps_api_key:
+```
+
 ### Running Ansible Roles
 
 Run the roles in sequence for a fresh installation. The plays target the hosts with the `remote_server_user` defined in [group_vars/vault.yml](group_vars/vault.yml).

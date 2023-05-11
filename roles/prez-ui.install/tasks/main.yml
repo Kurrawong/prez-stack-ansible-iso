@@ -1,4 +1,11 @@
 - block:
+    - name: copy .env from host to target /home/{{ remote_server_user }}/.env
+      ansible.builtin.template:
+        src: .env.j2
+        dest: /home/{{ remote_server_user }}/.env
+        owner: "{{ remote_server_user }}"
+        mode: "0644"
+
     - name: create prez-ui container with a systemd service file managed by systemctl
       containers.podman.podman_container:
         name: prez-ui
@@ -6,6 +13,8 @@
         state: present
         ports:
           - "8001:8000"
+        env_file: /home/{{ remote_server_user }}/.env
+        recreate: true
         generate_systemd:
           path: /etc/systemd/system/
           restart_policy: always
