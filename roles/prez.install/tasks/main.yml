@@ -1,4 +1,14 @@
 - block:
+    - name: populate service facts
+      service_facts:
+
+    - name: stop prez
+      systemd:
+        name: container-prez
+        state: stopped
+        daemon_reload: true
+      when: "'container-prez.service' in services"
+
     - name: create prez container with a systemd service file managed by systemctl
       containers.podman.podman_container:
         name: prez

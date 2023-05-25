@@ -1,4 +1,14 @@
 - block:
+    - name: populate service facts
+      service_facts:
+
+    - name: stop prez-ui
+      systemd:
+        name: container-prez-ui
+        state: stopped
+        daemon_reload: true
+      when: "'container-prez-ui.service' in services"
+
     - name: copy .env from host to target /home/{{ remote_server_user }}/.env
       ansible.builtin.template:
         src: .env.j2
