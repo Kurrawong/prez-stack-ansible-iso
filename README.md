@@ -1,6 +1,6 @@
 # QLD Gov Dept Resources Ansible Prez Stack
 
-An Ansible playbook and roles to manage cloud VMs running the Prez Stack.
+An Ansible playbook and roles to manage Debian cloud VMs running the Prez Stack.
 
 The Prez Stack consists of the following:
 
@@ -52,6 +52,20 @@ To edit the vault file, run the following.
 
 ```
 ansible-vault edit group_vars/vault.yml --vault-password-file ./ansiblepass
+```
+
+These are the variables in the vault.
+
+```
+# Remote server's user, e.g., ec2-user, ubuntu
+remote_server_user:
+
+# The Fuseki basic auth credentials
+fuseki_user:
+fuseki_password:
+
+# The Google Maps API key used by Prez UI
+google_maps_api_key:
 ```
 
 ### Running Ansible Roles

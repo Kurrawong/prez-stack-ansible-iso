@@ -21,6 +21,16 @@
         owner: 1000
         group: 1000
 
+    - name: populate service facts
+      service_facts:
+
+    - name: stop fuseki
+      systemd:
+        name: container-fuseki
+        state: stopped
+        daemon_reload: true
+      when: "'container-fuseki.service' in services"
+
     - name: create fuseki container with a systemd service file managed by systemctl
       containers.podman.podman_container:
         name: fuseki
