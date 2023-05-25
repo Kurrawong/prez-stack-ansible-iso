@@ -9,11 +9,11 @@
         daemon_reload: true
       when: "'container-prez-ui.service' in services"
 
-    - name: copy .env from host to target /home/{{ remote_server_user }}/.env
-      ansible.builtin.template:
-        src: .env.j2
-        dest: /home/{{ remote_server_user }}/.env
-        owner: "{{ remote_server_user }}"
+    - name: copy .env from host to target /home/ubuntu/.env
+      ansible.builtin.copy:
+        src: .env
+        dest: /home/ubuntu/.env
+        owner: root
         mode: "0644"
 
     - name: create prez-ui container with a systemd service file managed by systemctl
@@ -22,12 +22,14 @@
         image: "{{ prez_ui_image }}"
         state: present
         ports:
-          - "8001:8000"
-        env_file: /home/{{ remote_server_user }}/.env
-        recreate: true
+          - "8001:80"
         generate_systemd:
           path: /etc/systemd/system/
           restart_policy: always
+        env:
+          VOCPREZ_SPARQL_ENDPOINT: http://0.0.0.0:3030/gsq
+        volume:
+          - /home/ubuntu/.env:/.env
 
     - name: enable prez-ui service
       systemd:
